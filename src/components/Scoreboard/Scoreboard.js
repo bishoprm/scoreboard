@@ -14,10 +14,10 @@ export default function Scoreboard() {
   const [sort_by, set_sort_by] = useState("name"); // either "score" or "name"
 
   const [players, set_players] = useState([
-    { id: 1, name: "Violeta", score: 11 },
-    { id: 2, name: "Eszter", score: 14 },
-    { id: 3, name: "Jeroen v2", score: 4 },
-    { id: 4, name: "Lisa", score: 42 },
+    { id: 1, name: "Buffy", score: 11 },
+    { id: 2, name: "Xander", score: 14 },
+    { id: 3, name: "Willow", score: 4 },
+    { id: 4, name: "Tara", score: 42 },
   ]);
 
   const players_sorted =
