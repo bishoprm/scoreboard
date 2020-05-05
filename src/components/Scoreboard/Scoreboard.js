@@ -84,9 +84,6 @@ export default function Scoreboard() {
     <div className="Scoreboard">
       <h2>Player's Scores:</h2>
       <p>
-        <button onClick={reset}>reset</button>
-        <button onClick={randomize}>randomize score</button>
-        <br />
         Sort order: <br />
         <select onChange={change_sorting}>
           <option value="score">Sort by score</option>
@@ -96,7 +93,7 @@ export default function Scoreboard() {
       <p>
         {players_sorted.map((player) => {
           if (player.id === null) {
-            return "Add a new players below, enjoy the game!";
+            return "Add a new players below, then use the + button to add points. Enjoy the game!";
           } else {
             return (
               <Player
@@ -113,6 +110,11 @@ export default function Scoreboard() {
       </p>
       <p>
         <AddPlayerForm addPlayer={addPlayer} />
+      </p>
+      <p>
+        {" "}
+        <button onClick={reset}>reset scores</button>
+        <button onClick={randomize}>randomize scores</button>
       </p>
     </div>
   );
