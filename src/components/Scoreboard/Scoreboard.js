@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Player from "../Player/Player";
 import "./Scoreboard.scss";
+import AddPlayerForm from "../AppPlayerForm";
 
 function compare_score(player_a, player_b) {
   return player_b.score - player_a.score;
@@ -14,10 +15,10 @@ export default function Scoreboard() {
   const [sort_by, set_sort_by] = useState("name"); // either "score" or "name"
 
   const [players, set_players] = useState([
-    { id: 1, name: "Buffy", score: 11 },
-    { id: 2, name: "Xander", score: 14 },
-    { id: 3, name: "Willow", score: 4 },
-    { id: 4, name: "Tara", score: 42 },
+    { id: null, name: "", score: null },
+    // { id: 2, name: "Xander", score: 14 },
+    // { id: 3, name: "Willow", score: 4 },
+    // { id: 4, name: "Tara", score: 42 },
   ]);
 
   const players_sorted =
@@ -72,6 +73,13 @@ export default function Scoreboard() {
     set_players(resetArray);
   };
 
+  const addPlayer = (name) => {
+    console.log("Lets add a new player with the name:", name);
+    const newPlayer = { id: players.length + 1, name: name, score: 0 };
+    const addANewOne = [...players, newPlayer];
+    set_players(addANewOne);
+  };
+
   return (
     <div className="Scoreboard">
       <h2>Player's Scores:</h2>
@@ -87,17 +95,24 @@ export default function Scoreboard() {
       </p>
       <p>
         {players_sorted.map((player) => {
-          return (
-            <Player
-              key={player.id}
-              name={player.name}
-              score={player.score}
-              id={player.id}
-              // Passing it down as a prop
-              incrementScore={incrementScore}
-            />
-          );
+          if (player.id === null) {
+            return "Add a new players below, enjoy the game!";
+          } else {
+            return (
+              <Player
+                key={player.id}
+                name={player.name}
+                score={player.score}
+                id={player.id}
+                // Passing it down as a prop
+                incrementScore={incrementScore}
+              />
+            );
+          }
         })}
+      </p>
+      <p>
+        <AddPlayerForm addPlayer={addPlayer} />
       </p>
     </div>
   );
