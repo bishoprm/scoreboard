@@ -83,13 +83,7 @@ export default function Scoreboard() {
   return (
     <div className="Scoreboard">
       <h2>Player's Scores:</h2>
-      <p>
-        Sort order: <br />
-        <select onChange={change_sorting}>
-          <option value="score">Sort by score</option>
-          <option value="name">Sort by name</option>
-        </select>
-      </p>
+
       <p>
         {players_sorted.map((player) => {
           if (player.id === null) {
@@ -115,6 +109,13 @@ export default function Scoreboard() {
         {" "}
         <button onClick={reset}>reset scores</button>
         <button onClick={randomize}>randomize scores</button>
+      </p>
+      <p>
+        Sort order: <br />
+        <select onChange={change_sorting}>
+          <option value="score">Sort by score</option>
+          <option value="name">Sort by name</option>
+        </select>
       </p>
     </div>
   );
