@@ -83,11 +83,14 @@ export default function Scoreboard() {
   return (
     <div className="Scoreboard">
       <h2>Player's Scores:</h2>
+      <p>
+        Add a new player below, then use the + button to add points. Have fun!
+      </p>
 
       <p>
         {players_sorted.map((player) => {
           if (player.id === null) {
-            return "Add a new players below, then use the + button to add points. Enjoy the game!";
+            return;
           } else {
             return (
               <Player
