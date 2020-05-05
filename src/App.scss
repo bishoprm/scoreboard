@@ -12,6 +12,14 @@ body {
   padding: 0;
 }
 
+button,
+select {
+  background: linear-gradient(90deg, $secondary, $primary);
+
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
 h1,
 h2,
 h3 {
